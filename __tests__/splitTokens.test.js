@@ -1,8 +1,8 @@
-const splitTokens = require('../src/splitTokens');
+import splitTokens from '../src/splitTokens.js';
 
 describe('splitTokens', () => {
   describe('① 単一値のデータ（改行は無く、区切り文字がないデータ）', () => {
-    testData = [
+    const testData = [
       { title: '一文字："a"→"a"', input: 'a', validation: 'a' },
       { title: '複数字："ab"→"ab"', input: 'ab', validation: 'ab' },
       { title: '一文字,末尾に改行："a\n"→"a"', input: 'a\n', validation: 'a' },
@@ -21,7 +21,7 @@ describe('splitTokens', () => {
   });
 
   describe('② 一行のデータ（改行は無く、1行の中で区切り文字があるデータ）', () => {
-    testData = [
+    const testData = [
       {
         title: '半角スペース区切り："a b c"→["a", "b", "c"]',
         input: 'a b c',
@@ -68,7 +68,7 @@ describe('splitTokens', () => {
   });
 
   describe('③ 複数行のデータ', () => {
-    testData = [
+    const testData = [
       { title: '単一値,一文字："a\nb"→[["a"], ["b"]] ', input: 'a\nb', validation: [['a'], ['b']] },
       {
         title: '単一値,複数文字："ab\ncd"→[["ab"], ["cd"]]',
