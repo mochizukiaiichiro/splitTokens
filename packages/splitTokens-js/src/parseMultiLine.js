@@ -1,8 +1,30 @@
+import { DELIMITER } from './delimiter.js';
 import toValue from './toValue.js';
 
-export default function parseMultiLine(str, delimiter) {
+/**
+ * 複数行の文字列を二次元配列に変換する
+ * - 空行は無視
+ * - 各行は DELIMITER で分割し、空文字を除去
+ * - 数値文字列は toValue により整数へ変換
+ *
+ * @param {string} str 複数行入力
+ * @returns {Array<(number|string)[]>} 二次元配列（行ごとのトークン配列）
+ *
+ * @example
+ * parseMultiLine('a b c\nd e f');
+ * // => [['a','b','c'],['d','e','f']]
+ *
+ * parseMultiLine('1 2 3\n4 5 6');
+ * // => [[1,2,3],[4,5,6]]
+ */
+export default function parseMultiLine(str) {
   return str
     .split('\n')
-    .filter(Boolean)
-    .map((line) => line.split(delimiter).filter(Boolean).map(toValue));
+    .filter((s) => s !== '') // 空文字除去
+    .map((line) =>
+      line
+        .split(DELIMITER)
+        .filter((s) => s !== '') // 空文字除去
+        .map(toValue)
+    );
 }

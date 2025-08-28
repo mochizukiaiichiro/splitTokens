@@ -1,3 +1,16 @@
+/**
+ * 入力文字列をパース前に正規化する
+ * - 改行コードをLFに統一（CRLF/CR → LF）
+ * - タブ/全角スペースを半角スペースに統一
+ * - 先頭末尾の空白を除去
+ *
+ * @param {string} str 入力文字列
+ * @returns {string} 正規化後の文字列
+ *
+ * @example
+ * normalizeInput(' a\tb\u3000c\r\n');
+ * // => 'a b c'
+ */
 export default function normalizeInput(str) {
   return str
     .replace(/\r\n?/g, '\n') // 改行統一
