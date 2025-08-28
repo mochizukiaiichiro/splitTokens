@@ -1,0 +1,56 @@
+[
+  {
+    "title": "途中に空行がある複数行入力",
+    "input": "1 2 3\n\n4 5 6",
+    "output": [
+      [1, 2, 3],
+      [4, 5, 6]
+    ]
+  },
+  {
+    "title": "区切り文字が連続（スペース2個）",
+    "input": "1  2  3",
+    "output": [1, 2, 3]
+  },
+  {
+    "title": "区切り文字が連続（カンマ＋スペース）",
+    "input": "a,  b,  c",
+    "output": ["a", "b", "c"]
+  },
+  {
+    "title": "先頭と末尾に余計な空白と改行",
+    "input": "   7 8 9   \n",
+    "output": [7, 8, 9]
+  },
+  {
+    "title": "負の整数を含む",
+    "input": "-1 -2 -3",
+    "output": [-1, -2, -3]
+  },
+  {
+    "title": "混在型（数値と文字列）",
+    "input": "10 apple 20 banana",
+    "output": [10, "apple", 20, "banana"]
+  },
+  {
+    "title": "Windows改行（\\r\\n）",
+    "input": "x y z\r\np q r",
+    "output": [
+      ["x", "y", "z"],
+      ["p", "q", "r"]
+    ]
+  },
+  {
+    "title": "タブ区切り（\\t）",
+    "input": "1\t2\t3",
+    "output": [1, 2, 3]
+  },
+  {
+    "title": "改行のみの行を含む",
+    "input": "a b c\n\nx y z",
+    "output": [
+      ["a", "b", "c"],
+      ["x", "y", "z"]
+    ]
+  }
+]

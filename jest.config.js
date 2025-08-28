@@ -7,6 +7,6 @@ export default {
     '!**/node_modules/**',
   ],
   testMatch: [
-    '**/__tests__/**/*.test.js', // __tests__ ディレクトリ配下
+    '**/tests/**/*.test.js', // tests ディレクトリ配下
   ],
 };
