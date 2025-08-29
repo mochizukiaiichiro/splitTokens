@@ -1,4 +1,5 @@
 import { DELIMITER } from './delimiter.js';
+import parseSingleLine from './parseSingleLine.js';
 import toValue from './toValue.js';
 
 /**
@@ -20,11 +21,6 @@ import toValue from './toValue.js';
 export default function parseMultiLine(str) {
   return str
     .split('\n')
-    .filter((s) => s !== '') // 空文字除去
-    .map((line) =>
-      line
-        .split(DELIMITER)
-        .filter((s) => s !== '') // 空文字除去
-        .map(toValue)
-    );
+    .filter((s) => s.trim() !== '') // 空文字除去
+    .map(parseSingleLine);
 }
