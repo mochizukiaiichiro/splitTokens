@@ -18,6 +18,6 @@ import toValue from './toValue.js';
 export default function parseSingleLine(str) {
   return str
     .split(DELIMITER)
-    .filter((s) => s !== '') // 空文字除去
+    .filter((s) => s.trim() !== '') // 空文字除去
     .map(toValue);
 }
