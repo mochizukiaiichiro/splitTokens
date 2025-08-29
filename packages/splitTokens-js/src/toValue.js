@@ -13,5 +13,5 @@
  * toValue('apple'); // 'apple'
  */
 export default function toValue(s) {
-  return /^-?\d+$/.test(s) ? Number(s) : s;
+  return /^[-+]?\d*\.?\d+$/.test(s) ? Number(s) : s;
 }
