@@ -61,6 +61,8 @@ with open("input.txt", encoding="utf-8") as f:
 print(splitTokens(input_data))
 ```
 
+実行例（Windows cmd.exe）
+
 ```Bash
 cat input.txt | python main.py
 ```
