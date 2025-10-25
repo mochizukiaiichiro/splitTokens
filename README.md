@@ -1,6 +1,7 @@
-# splitTokens.js — 汎用入力パーサ for Node.js
+# splitTokens — 汎用入力パーサ
 
-競技プログラミング（AtCoder / paiza など）や CLI ツール、スクリプト向けの**単一行や複数行の半角/全角スペース、タブ、カンマ、改行が混在した文字列を配列にパースする汎用関数** です。
+paiza や AtCoder などの競技プログラミングの問題から与えられる改行やカンマ区切りのデータを簡単に取得できる関数です。
+**単一行や複数行の半角/全角スペース、タブ、カンマ、改行が混在した文字列を配列に変換する汎用関数** です。
 
 ---
 
@@ -17,51 +18,51 @@
 - 数値文字列は Number 型に変換
   - **注意**: `001` のようなゼロ埋め整数は数値変換時に `1` となる
   - **注意**: `+1` のような正の符号付数値文字列は `1` となる
-- 外部依存なし、Node.js 標準モジュールのみで動作
+- 外部依存なし
+- JavaScript(Node.js) と Python の両方で利用可能
 
 ---
 
 ## インストール / セットアップ
 
-外部依存はありません。  
-`packages/splitTokens-js/src/` 以下のファイルをプロジェクトにコピーするか、モジュールとしてインポートして使用します。
+外部依存はありません。
+
+- JavaScript: Node.js 標準モジュールのみ
+- Python: 標準ライブラリのみ
 
 ---
 
-## 使い方
+## 使用例
 
-### ライブラリとして利用
-
-```js
-import splitTokens from './src/splitTokens.js';
-import fs from 'fs';
-
-// デフォルト: 単一値も配列で返す
-console.log(splitTokens('a')); // ['a']
-
-// オプションで単一値をプリミティブ化
-console.log(splitTokens('a', { primitive: true })); // 'a'
-
-// CLI標準入力と組み合わせ
-const data = fs.readFileSync(0, 'utf8');
-const parsed = splitTokens(data, { primitive: true });
-console.log(parsed);
-```
-
-### CLI として利用
+### JavaScript (Node.js)
 
 ```js
-import splitTokens from './src/splitTokens.js';
 import fs from 'fs';
+import { splitTokens } from './splitTokens.js';
 
 const input = fs.readFileSync(0, 'utf8');
 console.log(splitTokens(input));
 ```
 
-### 実行例（Windows cmd.exe）
+実行例（Windows cmd.exe）
 
 ```Bash
 type input.txt | node index.js
+```
+
+### Python
+
+```python
+from splitTokens import splitTokens
+
+with open("input.txt", encoding="utf-8") as f:
+    input_data = f.read()
+
+print(splitTokens(input_data))
+```
+
+```Bash
+cat input.txt | python main.py
 ```
 
 ## 仕様
@@ -91,11 +92,16 @@ type input.txt | node index.js
 
 ## テスト
 
-Jest を使用してテストしています。
+- JavaScript: Jest を使用
+- Python: pytest を使用
 
 ```Bash
+# JavaScript
 npm install
 npm test
+
+# Python
+pytest
 ```
 
 ## ライセンス
